@@ -28,35 +28,37 @@ public class Main {
         commandManager.addCommand("filter_contains_name", new FilterContainsNameCommand(console, collectionManager));
         commandManager.addCommand("filter_less_than_postal_address", new FilterLessThanPostalAddressCommand(console, collectionManager));
 
-        // test
-        commandManager.executeCommand("help", new String[]{});
 
-        collectionManager.add(new Organization("meow", new Coordinates(1d, 1f), 1d, "Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("street1", new Location(1L, 1d, "town1"))));
-        collectionManager.add(new Organization("meow1", new Coordinates(1d, 1f), 1d, "Not a Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("street1", new Location(1L, 1d, "town1"))));
-        collectionManager.add(new Organization("meow2", new Coordinates(1d, 1f), 1d, "Totally Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("street1", new Location(1L, 1d, "town1"))));
-        collectionManager.add(new Organization("meow3", new Coordinates(1d, 1f), 1d, "A Totally Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("street1", new Location(1L, 1d, "town1"))));
-
-        commandManager.executeCommand("show", new String[]{});
-        commandManager.executeCommand("min_by_full_name", new String[]{});
-
-        commandManager.executeCommand("remove_by_id", new String[]{"1"});
-        commandManager.executeCommand("show", new String[]{});
-
-        commandManager.executeCommand("clear", new String[]{});
-        collectionManager.add(new Organization("meow3", new Coordinates(1d, 1f), 1d, "A Totally Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("street1", new Location(1L, 1d, "town1"))));
-
-        commandManager.executeCommand("show", new String[]{});
-
-        collectionManager.add(new Organization("meow4", new Coordinates(1d, 1f), 1d, "A Totally Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("1234", new Location(1L, 1d, "town1"))));
-        collectionManager.update(5, new Organization("meow3 but freak", new Coordinates(1d, 1f), 1d, "A Totally Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("9843483", new Location(1L, 1d, "town1"))));
-
-        commandManager.executeCommand("show", new String[]{});
-        commandManager.executeCommand("info", new String[]{});
-
-        commandManager.executeCommand("filter_contains_name", new String[]{"fr"});
-
-        collectionManager.filterLessThanPostalAddress(new Address("9999999", new Location(1L, 1d, "town1")));
-
-        commandManager.executeCommand("exit", new String[]{});
+//
+//        // test
+//        commandManager.executeCommand("help", new String[]{});
+//
+//        collectionManager.add(new Organization("meow", new Coordinates(1d, 1f), 1d, "Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("street1", new Location(1L, 1d, "town1"))));
+//        collectionManager.add(new Organization("meow1", new Coordinates(1d, 1f), 1d, "Not a Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("street1", new Location(1L, 1d, "town1"))));
+//        collectionManager.add(new Organization("meow2", new Coordinates(1d, 1f), 1d, "Totally Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("street1", new Location(1L, 1d, "town1"))));
+//        collectionManager.add(new Organization("meow3", new Coordinates(1d, 1f), 1d, "A Totally Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("street1", new Location(1L, 1d, "town1"))));
+//
+//        commandManager.executeCommand("show", new String[]{});
+//        commandManager.executeCommand("min_by_full_name", new String[]{});
+//
+//        commandManager.executeCommand("remove_by_id", new String[]{"1"});
+//        commandManager.executeCommand("show", new String[]{});
+//
+//        commandManager.executeCommand("clear", new String[]{});
+//        collectionManager.add(new Organization("meow3", new Coordinates(1d, 1f), 1d, "A Totally Freak Freak", 125, OrganizationT`ype.COMMERCIAL, new Address("street1", new Location(1L, 1d, "town1"))));
+//
+//        commandManager.executeCommand("show", new String[]{});
+//
+//        collectionManager.add(new Organization("meow4", new Coordinates(1d, 1f), 1d, "A Totally Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("1234", new Location(1L, 1d, "town1"))));
+//        collectionManager.update(5, new Organization("meow3 but freak", new Coordinates(1d, 1f), 1d, "A Totally Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("9843483", new Location(1L, 1d, "town1"))));
+//
+//        commandManager.executeCommand("show", new String[]{});
+//        commandManager.executeCommand("info", new String[]{});
+//
+//        commandManager.executeCommand("filter_contains_name", new String[]{"fr"});
+//
+//        collectionManager.filterLessThanPostalAddress(new Address("9999999", new Location(1L, 1d, "town1")));
+//
+//        commandManager.executeCommand("exit", new String[]{});
     }
 }

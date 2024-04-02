@@ -1,13 +1,20 @@
 package models;
 
-public class Location {
-    private Long x; //Поле не может быть null
-    private Double y; //Поле не может быть null
-    private String name; //Строка не может быть пустой, Поле может быть null
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-    public Location(Long x, Double y, String name) {
-        this.x = x;
-        this.y = y;
-        this.name = name;
-    }
+@AllArgsConstructor
+@Setter
+@Getter
+public class Location {
+    @NotNull
+    private Long x; //Поле не может быть null
+    @NotNull
+    private Double y; //Поле не может быть null
+    @NotNull
+    @NotBlank
+    private String name; //Строка не может быть пустой, Поле может быть null
 }
