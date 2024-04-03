@@ -22,7 +22,6 @@ public class InfoCommand implements CommandInterface {
             return;
         }
 
-        console.println("Информация о коллекции:");
         console.println("Дата инициализации коллекции: " + CollectionManager.initializationTime);
         var collection = manager.getCollection();
         console.println("Тип коллекции: " + collection.getClass().getName());

@@ -1,14 +1,15 @@
 import commandManagement.commands.*;
-import manager.CollectionManager;
-import manager.CommandManager;
-import manager.Console;
+import manager.*;
 import models.*;
 
+import javax.xml.bind.JAXBException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JAXBException {
         Console console = new Console();
-        CommandManager commandManager = new CommandManager();
+        CommandManager commandManager = new CommandManager(console);
         CollectionManager collectionManager = new CollectionManager();
+        FileManager fileManager = new FileManager("input.xml", console, collectionManager);
 
         // set all my commands
         commandManager.addCommand("help", new HelpCommand(console, commandManager));
@@ -18,7 +19,7 @@ public class Main {
         commandManager.addCommand("update", new UpdateCommand(console, collectionManager));
         commandManager.addCommand("remove_by_id", new RemoveByIdCommand(console, collectionManager));
         commandManager.addCommand("clear", new ClearCommand(console, collectionManager));
-//        commandManager.addCommand("save", new SaveCommand(console, commandManager));
+        commandManager.addCommand("save", new SaveCommand(console, fileManager));
 //        commandManager.addCommand("execute_script", new ExecuteScriptCommand(console, commandManager));
         commandManager.addCommand("exit", new ExitCommand(console));
         commandManager.addCommand("add_if_min", new AddIfMinCommand(console, collectionManager));
@@ -28,6 +29,8 @@ public class Main {
         commandManager.addCommand("filter_contains_name", new FilterContainsNameCommand(console, collectionManager));
         commandManager.addCommand("filter_less_than_postal_address", new FilterLessThanPostalAddressCommand(console, collectionManager));
 
+        // interactive mode
+        new RuntimeManager(console, fileManager, commandManager).interactiveMode();
 
 //
 //        // test

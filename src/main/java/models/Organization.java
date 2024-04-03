@@ -9,6 +9,9 @@ import lombok.*;
 import manager.IdManager;
 import org.hibernate.validator.constraints.UniqueElements;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Comparator;
 
 @Getter

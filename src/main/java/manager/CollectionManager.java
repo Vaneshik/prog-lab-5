@@ -1,19 +1,19 @@
 package manager;
 
+import lombok.Getter;
+import lombok.Setter;
 import models.Address;
 import models.Organization;
 
 import java.util.List;
 import java.util.TreeSet;
 
+@Getter
+@Setter
 public class CollectionManager {
-    private final TreeSet<Organization> collection = new TreeSet<>();
+    private TreeSet<Organization> collection = new TreeSet<>();
     public static final String initializationTime = java.time.LocalDateTime.now()
             .format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
-
-    public TreeSet<Organization> getCollection() {
-        return collection;
-    }
 
     public void add(Organization o) {
         collection.add(o);
@@ -66,4 +66,5 @@ public class CollectionManager {
     public void removeLower(Organization o) {
         collection.removeIf(organization -> organization.compareTo(o) < 0);
     }
+
 }
