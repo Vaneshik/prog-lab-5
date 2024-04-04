@@ -3,6 +3,8 @@ package commandManagement.commands;
 import commandManagement.CommandInterface;
 import manager.CollectionManager;
 import manager.Console;
+import models.Organization;
+import models.forms.AddressForm;
 
 public class FilterLessThanPostalAddressCommand implements CommandInterface {
     Console console;
@@ -15,14 +17,18 @@ public class FilterLessThanPostalAddressCommand implements CommandInterface {
 
     @Override
     public void execute(String[] args) {
-        if (args.length != 1) {
-            console.printError("Команда принимает один аргумент!");
+        if (args.length != 0) {
+            console.printError("Команда не принимает аргументы!");
             return;
         }
 
-        // TODO: Parse input
-
-//        manager.filterLessThanPostalAddress(args[0]);
+        var response = manager.filterLessThanPostalAddress(new AddressForm(console).build());
+        if (response.isEmpty()) {
+            console.println("Элементов не найдено");
+        } else {
+            console.println("Элементы, значение поля postalAddress которых меньше заданного:");
+            response.stream().map(Organization::toString).forEach(console::println);
+        }
     }
 
     @Override

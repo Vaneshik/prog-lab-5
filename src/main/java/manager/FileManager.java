@@ -1,12 +1,16 @@
 package manager;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import manager.CollectionManager;
 import manager.Console;
+import models.*;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.File;
+import java.io.*;
+import java.util.Date;
+import java.util.TreeSet;
 
 public class FileManager {
     private String inputFileName;
@@ -19,20 +23,18 @@ public class FileManager {
         this.collectionManager = collectionManager;
     }
 
-    public void saveCollection() throws JAXBException {
+    public void saveCollection() throws JsonProcessingException {
         try {
-            JAXBContext context = JAXBContext.newInstance(CollectionManager.class);
-            Marshaller jaxbMarshaller = context.createMarshaller();
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshaller.marshal(collectionManager.getCollection(), new File(inputFileName));
-        } catch (JAXBException e) {
-            console.printError("Ошибка сохранения коллекции :(");
+            XmlMapper mapper = new XmlMapper();
+            mapper.registerModule(new JavaTimeModule());
+            mapper.writerWithDefaultPrettyPrinter().writeValue(new File(inputFileName), collectionManager.getCollection());
+        } catch (Exception e) {
+            console.printError("Ошибка сохранения коллекции в файл");
         }
     }
 
-    public void fillCollection() throws JAXBException {
+    public void fillCollection() {
         File file = new File(inputFileName);
-
         if (!file.exists()) {
             console.printError("Файл не найден");
             return;
@@ -41,8 +43,26 @@ public class FileManager {
             console.printError("Нет прав на чтение файла");
             return;
         }
+        try {
+            XmlMapper xmlMapper = new XmlMapper();
+            xmlMapper.registerModule(new JavaTimeModule());
+            String xml = inputStreamToString(new FileInputStream(file));
+            collectionManager.setCollection(xmlMapper.readValue(xml, new TypeReference<TreeSet<Organization>>() {}));
+//            collectionManager.add(new Organization(98, "meow3 but freak", new Coordinates(1d, 1f), new Date(), 1d, "A Totally Freak Freak", 125, OrganizationType.COMMERCIAL, new Address("9843483", new Location(1L, 1d, "town1"))));
+        } catch (Exception e) {
+            console.printError(e.getMessage());
+            console.printError("Ошибка чтения файла");
+        }
+    }
 
-        JAXBContext context = JAXBContext.newInstance(CollectionManager.class);
-        collectionManager.setCollection(((CollectionManager) context.createUnmarshaller().unmarshal(file)).getCollection());
+    public String inputStreamToString(InputStream is) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        String line;
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        while ((line = br.readLine()) != null) {
+            sb.append(line);
+        }
+        br.close();
+        return sb.toString();
     }
 }

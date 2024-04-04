@@ -1,6 +1,5 @@
 package manager;
 
-import javax.xml.bind.JAXBException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -15,7 +14,7 @@ public class RuntimeManager {
         this.console = console;
     }
 
-    public void interactiveMode() throws JAXBException {
+    public void interactiveMode() {
         Scanner scanner = new Scanner(System.in);
         fileManager.fillCollection();
         while (true) {

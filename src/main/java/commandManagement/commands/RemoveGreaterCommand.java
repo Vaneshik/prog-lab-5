@@ -3,6 +3,7 @@ package commandManagement.commands;
 import commandManagement.CommandInterface;
 import manager.CollectionManager;
 import manager.Console;
+import models.forms.OrganizationForm;
 
 public class RemoveGreaterCommand implements CommandInterface {
     Console console;
@@ -15,14 +16,13 @@ public class RemoveGreaterCommand implements CommandInterface {
 
     @Override
     public void execute(String[] args) {
-        if (args.length != 1) {
-            console.printError("Команда принимает один аргумент!");
+        if (args.length != 0) {
+            console.printError("Команда не принимает аргументы!");
             return;
         }
 
         console.println("Удалены элементы, превышающие заданный");
-        // TODO: parse input
-        // manager.removeGreater(args[0]);
+        manager.removeGreater(new OrganizationForm(console).build());
     }
 
     @Override

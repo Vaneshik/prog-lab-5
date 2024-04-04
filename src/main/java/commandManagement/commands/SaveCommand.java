@@ -1,10 +1,9 @@
 package commandManagement.commands;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import commandManagement.CommandInterface;
 import manager.Console;
 import manager.FileManager;
-
-import javax.xml.bind.JAXBException;
 
 public class SaveCommand implements CommandInterface {
     FileManager fileManager;
@@ -16,8 +15,12 @@ public class SaveCommand implements CommandInterface {
     }
 
     @Override
-    public void execute(String[] args) throws JAXBException {
-        fileManager.saveCollection();
+    public void execute(String[] args)  {
+        try {
+            fileManager.saveCollection();
+        } catch (Exception e){
+            console.printError(e.getMessage());
+        }
         console.println("Коллекция сохранена в файл");
     }
 

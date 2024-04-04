@@ -5,15 +5,15 @@ import lombok.Setter;
 import models.Address;
 import models.Organization;
 
+import java.util.Date;
 import java.util.List;
 import java.util.TreeSet;
 
 @Getter
 @Setter
 public class CollectionManager {
-    private TreeSet<Organization> collection = new TreeSet<>();
-    public static final String initializationTime = java.time.LocalDateTime.now()
-            .format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
+    private TreeSet<Organization> collection = new TreeSet<Organization>();
+    public static final Date initializationTime = new Date();
 
     public void add(Organization o) {
         collection.add(o);
@@ -55,8 +55,8 @@ public class CollectionManager {
         return collection.stream().filter(o -> o.getName().contains(name)).toList();
     }
 
-    public void filterLessThanPostalAddress(Address postalAddress) {
-        collection.stream().filter(o -> o.getPostalAddress().compareTo(postalAddress) < 0).forEach(System.out::println);
+    public List<Organization> filterLessThanPostalAddress(Address postalAddress) {
+        return collection.stream().filter(o -> o.getPostalAddress().compareTo(postalAddress) < 0).toList();
     }
 
     public void removeGreater(Organization o) {
@@ -67,4 +67,7 @@ public class CollectionManager {
         collection.removeIf(organization -> organization.compareTo(o) < 0);
     }
 
+    public Organization getById(long id) {
+        return collection.stream().filter(o -> o.getId() == id).findFirst().orElse(null);
+    }
 }

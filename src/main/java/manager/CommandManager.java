@@ -2,7 +2,6 @@ package manager;
 
 import commandManagement.CommandInterface;
 
-import javax.xml.bind.JAXBException;
 import java.util.HashMap;
 
 public class CommandManager {
@@ -25,10 +24,14 @@ public class CommandManager {
         commands.put(name, command);
     }
 
-    public void executeCommand(String name, String[] args) throws JAXBException {
+    public void executeCommand(String name, String[] args)  {
         CommandInterface command = commands.get(name);
         if (command != null) {
+            try {
             command.execute(args);
+            } catch (Exception e) {
+                console.printError(e.getMessage());
+            }
         } else {
             console.println("Команда не найдена! Попробуйте ввести 'help' для получения списка команд.");
         }

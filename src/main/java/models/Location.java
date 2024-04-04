@@ -1,20 +1,15 @@
 package models;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @Setter
 @Getter
+@ToString
+@NoArgsConstructor
 public class Location {
-    @NotNull
     private Long x; //Поле не может быть null
-    @NotNull
     private Double y; //Поле не может быть null
-    @NotNull
-    @NotBlank
     private String name; //Строка не может быть пустой, Поле может быть null
+
 }

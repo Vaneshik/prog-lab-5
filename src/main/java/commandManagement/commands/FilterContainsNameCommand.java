@@ -19,8 +19,13 @@ public class FilterContainsNameCommand implements CommandInterface {
             console.printError("Команда принимает один аргумент!");
             return;
         }
-        console.println("Элементы, значение поля name которых содержит заданную подстроку:");
-        manager.filterContainsName(args[0]).stream().map(Object::toString).forEach(console::println);
+        var filteredOrganizations = manager.filterContainsName(args[0]);
+        if (!filteredOrganizations.isEmpty()) {
+            console.println("Элементы, значение поля name которых содержит заданную подстроку:");
+            filteredOrganizations.stream().map(Object::toString).forEach(console::println);
+        } else {
+            console.println("Ничего не найдено! :(");
+        }
     }
 
     @Override

@@ -3,6 +3,7 @@ package commandManagement.commands;
 import commandManagement.CommandInterface;
 import manager.CollectionManager;
 import manager.Console;
+import models.forms.OrganizationForm;
 
 public class AddIfMinCommand implements CommandInterface {
     Console console;
@@ -19,10 +20,7 @@ public class AddIfMinCommand implements CommandInterface {
             console.printError("Команда не принимает аргументы!");
             return;
         }
-
-        // TODO: Parse input
-
-        // manager.addIfMin();
+        manager.addIfMin(new OrganizationForm(console).build());
     }
 
     @Override

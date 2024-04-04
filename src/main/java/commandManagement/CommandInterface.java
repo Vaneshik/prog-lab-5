@@ -1,7 +1,8 @@
 package commandManagement;
 
-import javax.xml.bind.JAXBException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface CommandInterface {
-    void execute(String[] args) throws JAXBException;
+    void execute(String[] args) throws JsonProcessingException;
 }

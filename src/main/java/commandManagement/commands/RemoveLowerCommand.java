@@ -3,6 +3,8 @@ package commandManagement.commands;
 import commandManagement.CommandInterface;
 import manager.CollectionManager;
 import manager.Console;
+import models.Organization;
+import models.forms.OrganizationForm;
 
 public class RemoveLowerCommand implements CommandInterface {
     Console console;
@@ -15,13 +17,13 @@ public class RemoveLowerCommand implements CommandInterface {
 
     @Override
     public void execute(String[] args) {
-        if (args.length != 1) {
-            console.printError("Команда принимает один аргумент!");
+        if (args.length != 0) {
+            console.printError("Команда не принимает аргументы!");
             return;
         }
 
         console.println("Удалены элементы, меньшие, чем заданный");
-//        manager.removeLower(args[0]);
+        manager.removeLower(new OrganizationForm(console).build());
     }
 
     @Override
