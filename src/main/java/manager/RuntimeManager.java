@@ -1,26 +1,33 @@
 package manager;
 
+import lombok.AllArgsConstructor;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Менеджер выполнения программы.
+ */
+@AllArgsConstructor
 public class RuntimeManager {
-    FileManager fileManager;
-    CommandManager commandManager;
-    Console console;
+    private CommandManager commandManager;
+    private FileManager fileManager;
+    private ConsoleManager console;
 
-    public RuntimeManager(Console console, FileManager fileManager, CommandManager commandManager) {
-        this.fileManager = fileManager;
-        this.commandManager = commandManager;
-        this.console = console;
-    }
-
+    /**
+     * Интерактивный режим.
+     */
     public void interactiveMode() {
         Scanner scanner = new Scanner(System.in);
         fileManager.fillCollection();
         while (true) {
-            console.print(">>> ");
-            String[] userCommand = scanner.nextLine().trim().split(" ");
-            commandManager.executeCommand(userCommand[0], Arrays.copyOfRange(userCommand, 1, userCommand.length));
+            try {
+                console.print(">>> ");
+                String[] userCommand = scanner.nextLine().trim().split(" ");
+                commandManager.executeCommand(userCommand[0].toLowerCase(), Arrays.copyOfRange(userCommand, 1, userCommand.length));
+            } catch (Exception e) {
+                console.printError(e.getMessage());
+            }
         }
     }
 }

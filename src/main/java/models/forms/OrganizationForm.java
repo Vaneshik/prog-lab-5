@@ -1,23 +1,30 @@
 package models.forms;
 
-import manager.Console;
+import manager.ConsoleManager;
 import manager.IdManager;
 import models.Address;
 import models.Coordinates;
 import models.Organization;
 import models.OrganizationType;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
+/**
+ * Форма для создания объекта класса {@link Organization}.
+ */
 public class OrganizationForm extends Form<Organization> {
-    private final Console console;
+    private final ConsoleManager console;
 
-    public OrganizationForm(Console console) {
+    public OrganizationForm(ConsoleManager console) {
         super(console);
         this.console = console;
     }
 
+    /**
+     * Формирует объект класса {@link Organization}.
+     *
+     * @return Объект класса {@link Organization}
+     */
     @Override
     public Organization build() {
         return new Organization(
@@ -25,7 +32,7 @@ public class OrganizationForm extends Form<Organization> {
                 askString("название организации", " (поле не может быть пустым)", s -> !s.isEmpty()),
                 askCoordinates(),
                 new Date(),
-                askDouble("годовой оборот", " (поле не может быть пустым, значение должно быть больше нуля)", x -> x > 0),
+                askDouble("годовой оборот", " (значение должно быть больше нуля)", x -> x > 0),
                 askString("полное название организации", " (поле не может быть пустым)", s -> !s.isEmpty()),
                 askInteger("количество сотрудников", " (поле не может быть пустым, значение должно быть больше нуля)", x -> x > 0),
                 askOrganizationType(),

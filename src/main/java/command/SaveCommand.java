@@ -1,19 +1,26 @@
-package commandManagement.commands;
+package command;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import commandManagement.CommandInterface;
-import manager.Console;
+import manager.ConsoleManager;
 import manager.FileManager;
 
+/**
+ * Команда "save".
+ * Описание команды: сохранить коллекцию в файл.
+ */
 public class SaveCommand implements CommandInterface {
     FileManager fileManager;
-    Console console;
+    ConsoleManager console;
 
-    public SaveCommand(Console console, FileManager fileManager) {
+    public SaveCommand(ConsoleManager console, FileManager fileManager) {
         this.fileManager = fileManager;
         this.console = console;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args)  {
         try {

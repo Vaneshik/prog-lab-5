@@ -1,18 +1,26 @@
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
 import manager.CollectionManager;
-import manager.Console;
+import manager.ConsoleManager;
 
+/**
+ * Команда "filter_contains_name".
+ * Описание команды: вывести элементы, значение поля name которых содержит заданную подстроку.
+ */
 public class FilterContainsNameCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
     CollectionManager manager;
 
-    public FilterContainsNameCommand(Console console, CollectionManager manager) {
+    public FilterContainsNameCommand(ConsoleManager console, CollectionManager manager) {
         this.console = console;
         this.manager = manager;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 1) {
@@ -30,6 +38,6 @@ public class FilterContainsNameCommand implements CommandInterface {
 
     @Override
     public String toString() {
-        return ": вывести элементы, значение поля name которых содержит заданную подстроку";
+        return " <name> : вывести элементы, значение поля name которых содержит заданную подстроку";
     }
 }

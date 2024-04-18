@@ -2,6 +2,9 @@ package models;
 
 import lombok.*;
 
+/**
+ * Класс Координат.
+ */
 @AllArgsConstructor
 @Getter
 @Setter

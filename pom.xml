@@ -34,8 +34,18 @@
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>2.15.0</version>
         </dependency>
-
-
     </dependencies>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>

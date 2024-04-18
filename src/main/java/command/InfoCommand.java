@@ -1,20 +1,26 @@
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
 import manager.CollectionManager;
-import manager.CommandManager;
-import manager.Console;
+import manager.ConsoleManager;
 
-// вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)
+/**
+ * Команда "info".
+ * Описание команды: вывести в стандартный поток вывода информацию о коллекции.
+ */
 public class InfoCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
     CollectionManager manager;
 
-    public InfoCommand(Console console, CollectionManager manager) {
+    public InfoCommand(ConsoleManager console, CollectionManager manager) {
         this.console = console;
         this.manager = manager;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 0) {

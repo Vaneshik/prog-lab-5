@@ -1,17 +1,25 @@
 package models.forms;
 
-import manager.Console;
+import manager.ConsoleManager;
 import models.Address;
 import models.Location;
 
+/**
+ * Форма для создания объекта класса {@link Address}.
+ */
 public class AddressForm extends Form<Address> {
-    private final Console console;
+    private final ConsoleManager console;
 
-    public AddressForm(Console console) {
+    public AddressForm(ConsoleManager console) {
         super(console);
         this.console = console;
     }
 
+    /**
+     * Формирует объект класса {@link Address}.
+     *
+     * @return Объект класса {@link Address}
+     */
     @Override
     public Address build() {
         return new Address(

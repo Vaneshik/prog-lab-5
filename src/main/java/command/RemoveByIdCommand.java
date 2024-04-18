@@ -1,18 +1,26 @@
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
 import manager.CollectionManager;
-import manager.Console;
+import manager.ConsoleManager;
 
+/**
+ * Команда "remove_by_id".
+ * Описание команды: удалить элемент из коллекции по его id.
+ */
 public class RemoveByIdCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
     CollectionManager manager;
 
-    public RemoveByIdCommand(Console console, CollectionManager manager) {
+    public RemoveByIdCommand(ConsoleManager console, CollectionManager manager) {
         this.console = console;
         this.manager = manager;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 1) {
@@ -31,6 +39,6 @@ public class RemoveByIdCommand implements CommandInterface {
 
     @Override
     public String toString() {
-        return ": удалить элемент из коллекции по его id";
+        return " <id> : удалить элемент из коллекции по его id";
     }
 }

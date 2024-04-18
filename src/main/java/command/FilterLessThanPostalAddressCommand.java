@@ -1,20 +1,28 @@
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
 import manager.CollectionManager;
-import manager.Console;
+import manager.ConsoleManager;
 import models.Organization;
 import models.forms.AddressForm;
 
+/**
+ * Команда "filter_less_than_postal_address".
+ * Описание команды: вывести элементы, значение поля postalAddress которых меньше заданного.
+ */
 public class FilterLessThanPostalAddressCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
     CollectionManager manager;
 
-    public FilterLessThanPostalAddressCommand(Console console, CollectionManager manager) {
+    public FilterLessThanPostalAddressCommand(ConsoleManager console, CollectionManager manager) {
         this.console = console;
         this.manager = manager;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 0) {

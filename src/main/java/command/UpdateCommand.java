@@ -1,20 +1,27 @@
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
 import manager.CollectionManager;
-import manager.Console;
-import models.Organization;
+import manager.ConsoleManager;
 import models.forms.OrganizationForm;
 
+/**
+ * Команда "update".
+ * Описание команды: обновить значение элемента коллекции, id которого равен заданному.
+ */
 public class UpdateCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
     CollectionManager manager;
 
-    public UpdateCommand(Console console, CollectionManager manager) {
+    public UpdateCommand(ConsoleManager console, CollectionManager manager) {
         this.console = console;
         this.manager = manager;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 1) {
@@ -36,6 +43,6 @@ public class UpdateCommand implements CommandInterface {
 
     @Override
     public String toString() {
-        return ": обновить значение элемента коллекции, id которого равен заданному";
+        return " <id> : обновить значение элемента коллекции, id которого равен заданному";
     }
 }

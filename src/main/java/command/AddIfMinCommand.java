@@ -1,19 +1,27 @@
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
 import manager.CollectionManager;
-import manager.Console;
+import manager.ConsoleManager;
 import models.forms.OrganizationForm;
 
+/**
+ * Команда "add_if_min".
+ * Описание команды: добавить новый элемент, если его значение меньше, чем у наименьшего элемента коллекции.
+ */
 public class AddIfMinCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
     CollectionManager manager;
 
-    public AddIfMinCommand(Console console, CollectionManager manager) {
+    public AddIfMinCommand(ConsoleManager console, CollectionManager manager) {
         this.console = console;
         this.manager = manager;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 0) {

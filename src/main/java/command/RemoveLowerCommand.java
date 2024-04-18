@@ -1,20 +1,27 @@
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
 import manager.CollectionManager;
-import manager.Console;
-import models.Organization;
+import manager.ConsoleManager;
 import models.forms.OrganizationForm;
 
+/**
+ * Команда "remove_lower".
+ * Описание команды: удалить из коллекции все элементы, меньшие, чем заданный.
+ */
 public class RemoveLowerCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
     CollectionManager manager;
 
-    public RemoveLowerCommand(Console console, CollectionManager manager) {
+    public RemoveLowerCommand(ConsoleManager console, CollectionManager manager) {
         this.console = console;
         this.manager = manager;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 0) {

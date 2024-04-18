@@ -2,6 +2,10 @@ package models;
 
 import lombok.*;
 
+/**
+ * Класс Адреса.
+ * @author Vaneshik
+ */
 @Setter
 @Getter
 @AllArgsConstructor

@@ -1,18 +1,26 @@
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
 import manager.CommandManager;
-import manager.Console;
+import manager.ConsoleManager;
 
+/**
+ * Команда "help".
+ * Описание команды: вывести справку по доступным командам.
+ */
 public class HelpCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
     CommandManager manager;
 
-    public HelpCommand(Console console, CommandManager manager) {
+    public HelpCommand(ConsoleManager console, CommandManager manager) {
         this.console = console;
         this.manager = manager;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 0) {

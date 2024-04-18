@@ -1,5 +1,8 @@
 package models;
 
+/**
+ * Перечисление типов организаций.
+ */
 public enum OrganizationType {
     COMMERCIAL,
     GOVERNMENT,

@@ -1,19 +1,27 @@
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
 import manager.CollectionManager;
-import manager.Console;
+import manager.ConsoleManager;
 import models.forms.OrganizationForm;
 
+/**
+ * Команда "add".
+ * Описание команды: добавить новый элемент в коллекцию.
+ */
 public class AddCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
     CollectionManager manager;
 
-    public AddCommand(Console console, CollectionManager manager) {
+    public AddCommand(ConsoleManager console, CollectionManager manager) {
         this.console = console;
         this.manager = manager;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 0) {

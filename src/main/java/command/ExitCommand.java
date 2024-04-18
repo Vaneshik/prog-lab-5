@@ -1,16 +1,23 @@
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
-import manager.Console;
+import manager.ConsoleManager;
 
-
+/**
+ * Команда "exit".
+ * Описание команды: завершить программу (без сохранения в файл).
+ */
 public class ExitCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
 
-    public ExitCommand(Console console) {
+    public ExitCommand(ConsoleManager console) {
         this.console = console;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 0) {

@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Date;
 
+/**
+ * Класс Организации.
+ */
 @Getter
 @Setter
 @ToString
@@ -25,8 +28,7 @@ public class Organization implements Comparable<Organization>, Serializable {
 
     @Override
     public int compareTo(Organization other) {
-        return Comparator.comparingDouble(Organization::getAnnualTurnover)
-                .thenComparing(Organization::getEmployeesCount)
+        return Comparator.comparingInt(Organization::getEmployeesCount)
                 .thenComparingLong(Organization::getId)
                 .compare(this, other);
     }

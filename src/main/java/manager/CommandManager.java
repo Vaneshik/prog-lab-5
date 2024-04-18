@@ -1,36 +1,47 @@
 package manager;
 
-import commandManagement.CommandInterface;
+import command.CommandInterface;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 
+/**
+ * Класс для управления командами.
+ */
 public class CommandManager {
+    @Setter
+    @Getter
     HashMap<String, CommandInterface> commands = new HashMap<>();
-    Console console;
+    ConsoleManager console;
 
-    public CommandManager(Console console) {
+    public CommandManager(ConsoleManager console) {
         this.console = console;
     }
 
-    public HashMap<String, CommandInterface> getCommands() {
-        return commands;
-    }
-
-    public void setCommands(HashMap<String, CommandInterface> commands) {
-        this.commands = commands;
-    }
-
+    /**
+     * Добавить команду.
+     *
+     * @param name    имя команды
+     * @param command команда
+     */
     public void addCommand(String name, CommandInterface command) {
         commands.put(name, command);
     }
 
-    public void executeCommand(String name, String[] args)  {
+    /**
+     * Выполнить команду.
+     *
+     * @param name имя команды
+     * @param args аргументы
+     */
+    public void executeCommand(String name, String[] args) {
         CommandInterface command = commands.get(name);
         if (command != null) {
             try {
-            command.execute(args);
+                command.execute(args);
             } catch (Exception e) {
-                console.printError(e.getMessage());
+                console.printError(e.getClass().getName());
             }
         } else {
             console.println("Команда не найдена! Попробуйте ввести 'help' для получения списка команд.");

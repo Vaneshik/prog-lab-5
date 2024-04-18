@@ -1,23 +1,36 @@
-//але але ванешик жопа привет от кати пим на перекур то когда пойдем жду на 11п балконе
-package commandManagement.commands;
+package command;
 
-import commandManagement.CommandInterface;
 import manager.CollectionManager;
-import manager.Console;
+import manager.ConsoleManager;
 
+/**
+ * Команда "show".
+ * Описание команды: вывести в стандартный поток вывода все элементы коллекции в строковом представлении.
+ */
 public class ShowCommand implements CommandInterface {
-    Console console;
+    ConsoleManager console;
     CollectionManager manager;
 
-    public ShowCommand(Console console, CollectionManager manager) {
+    public ShowCommand(ConsoleManager console, CollectionManager manager) {
         this.console = console;
         this.manager = manager;
     }
 
+    /**
+     * Выполнение команды.
+     *
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args) {
         if (args.length != 0) {
             console.printError("Команда не принимает аргументы!");
+            return;
+        }
+        var collection = manager.getCollection();
+
+        if (collection.isEmpty()) {
+            console.println("Коллекция пуста!");
             return;
         }
 
