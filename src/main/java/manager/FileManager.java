@@ -58,6 +58,9 @@ public class FileManager {
             for (var organization : to_check) {
                 if (collectionManager.isValidOrganization(organization)) {
                     collectionManager.add(organization);
+                } else {
+                    console.printError("Организация с id " + organization.getId() + " не прошла валидацию");
+
                 }
             }
         } catch (Exception e) {
