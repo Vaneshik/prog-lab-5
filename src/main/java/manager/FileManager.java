@@ -2,8 +2,6 @@ package manager;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
 import java.io.*;
 
 /**
@@ -26,7 +24,6 @@ public class FileManager {
     public void saveCollection() {
         try {
             XmlMapper mapper = new XmlMapper();
-            mapper.registerModule(new JavaTimeModule());
             String xmlResult = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(collectionManager.getCollection());
             try (FileOutputStream fos = new FileOutputStream(inputFileName)) {
                 fos.write(xmlResult.getBytes());
@@ -48,7 +45,6 @@ public class FileManager {
 
         try {
             XmlMapper xmlMapper = new XmlMapper();
-            xmlMapper.registerModule(new JavaTimeModule());
             String xml = bufferedReaderToString(new BufferedReader(new FileReader(file)));
             collectionManager.setCollection(xmlMapper.readValue(xml, new TypeReference<>() {
             }));
