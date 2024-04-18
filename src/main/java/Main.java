@@ -7,7 +7,16 @@ public class Main {
         ConsoleManager console = new ConsoleManager();
         CommandManager commandManager = new CommandManager(console);
         CollectionManager collectionManager = new CollectionManager();
-        FileManager fileManager = new FileManager("data.xml", console, collectionManager);
+
+        String filename;
+        if (args.length != 1) {
+            console.printError("Необходимо передать имя файла в качестве аргумента, использую файл по умолчанию: data.xml");
+            filename = "data.xml";
+        } else {
+            filename = args[0];
+        }
+
+        FileManager fileManager = new FileManager(filename, console, collectionManager);
         IdManager.setCollectionManager(collectionManager);
 
         // setup all my commands
