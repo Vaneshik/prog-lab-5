@@ -31,7 +31,7 @@ public abstract class Form<T> {
     /**
      * Запрашивает у пользователя строку
      *
-     * @param fieldName   Название поля
+     * @param fieldName    Название поля
      * @param restrictions Ограничения
      * @param validator    Предикат валидации
      * @return Строка
@@ -40,12 +40,12 @@ public abstract class Form<T> {
         while (true) {
             console.print("Введите " + fieldName + restrictions + ":\n>>> ");
             String input = scanner.nextLine().trim();
-            if (input.isEmpty()) {
-                return null;
-            }
             if (validator.test(input)) {
                 return input;
             } else {
+                if (input.isEmpty() && validator.test("")) {
+                    return null;
+                }
                 console.printError("Неверный формат ввода((");
             }
         }
@@ -54,9 +54,9 @@ public abstract class Form<T> {
     /**
      * Запрашивает у пользователя Enum
      *
-     * @param fieldName       Название поля
+     * @param fieldName      Название поля
      * @param exceptedValues Допустимые значения
-     * @param validator       Предикат валидации
+     * @param validator      Предикат валидации
      * @return Перечисление
      */
     public Enum askEnum(String fieldName, Enum[] exceptedValues, Predicate<String> validator) {
@@ -83,7 +83,7 @@ public abstract class Form<T> {
     /**
      * Запрашивает у пользователя Integer
      *
-     * @param fieldName   Название поля
+     * @param fieldName    Название поля
      * @param restrictions Ограничения
      * @param validator    Предикат валидации
      * @return Целое число
@@ -92,9 +92,6 @@ public abstract class Form<T> {
         while (true) {
             console.print("Введите " + fieldName + restrictions + ":\n>>> ");
             String input = scanner.nextLine().trim();
-            if (input.isEmpty()) {
-                return null;
-            }
             try {
                 Integer number = Integer.parseInt(input);
                 if (validator.test(number)) {
@@ -103,6 +100,9 @@ public abstract class Form<T> {
                     console.printError("Ошибка валидации((");
                 }
             } catch (NumberFormatException e) {
+                if (input.isEmpty() && validator.test(null)) {
+                    return null;
+                }
                 console.printError("Неверный формат ввода((");
             }
         }
@@ -111,7 +111,7 @@ public abstract class Form<T> {
     /**
      * Запрашивает у пользователя Long
      *
-     * @param fieldName   Название поля
+     * @param fieldName    Название поля
      * @param restrictions Ограничения
      * @param validator    Предикат валидации
      * @return Длинное число
@@ -120,9 +120,6 @@ public abstract class Form<T> {
         while (true) {
             console.print("Введите " + fieldName + restrictions + ":\n>>> ");
             String input = scanner.nextLine().trim();
-            if (input.isEmpty()) {
-                return null;
-            }
             try {
                 Long number = Long.parseLong(input);
                 if (validator.test(number)) {
@@ -131,6 +128,9 @@ public abstract class Form<T> {
                     console.printError("Ошибка валидации((");
                 }
             } catch (NumberFormatException e) {
+                if (input.isEmpty() && validator.test(null)) {
+                    return null;
+                }
                 console.printError("Неверный формат ввода((");
             }
         }
@@ -139,7 +139,7 @@ public abstract class Form<T> {
     /**
      * Запрашивает у пользователя Double
      *
-     * @param fieldName   Название поля
+     * @param fieldName    Название поля
      * @param restrictions Ограничения
      * @param validator    Предикат валидации
      * @return Дробное число
@@ -148,9 +148,6 @@ public abstract class Form<T> {
         while (true) {
             console.print("Введите " + fieldName + restrictions + ":\n>>> ");
             String input = scanner.nextLine().trim();
-            if (input.isEmpty()) {
-                return null;
-            }
             try {
                 Double number = Double.parseDouble(input);
                 if (validator.test(number)) {
@@ -159,6 +156,9 @@ public abstract class Form<T> {
                     console.printError("Ошибка валидации((");
                 }
             } catch (NumberFormatException e) {
+                if (input.isEmpty() && validator.test(null)) {
+                    return null;
+                }
                 console.printError("Неверный формат ввода((");
             }
         }
@@ -167,7 +167,7 @@ public abstract class Form<T> {
     /**
      * Запрашивает у пользователя Float
      *
-     * @param fieldName   Название поля
+     * @param fieldName    Название поля
      * @param restrictions Ограничения
      * @param validator    Предикат валидации
      * @return Дробное число
@@ -176,9 +176,6 @@ public abstract class Form<T> {
         while (true) {
             console.print("Введите " + fieldName + restrictions + ":\n>>> ");
             String input = scanner.nextLine().trim();
-            if (input.isEmpty()) {
-                return null;
-            }
             try {
                 Float number = Float.parseFloat(input);
                 if (validator.test(number)) {
@@ -187,10 +184,11 @@ public abstract class Form<T> {
                     console.printError("Ошибка валидации((");
                 }
             } catch (NumberFormatException e) {
-                console.printError("Неверный формат ввода((");
+                if (input.isEmpty() && validator.test(null))
+                    return null;
             }
+            console.printError("Неверный формат ввода((");
         }
     }
-
-
 }
+

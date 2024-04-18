@@ -83,4 +83,25 @@
       </town>
     </postalAddress>
   </item>
+  <item>
+    <id>5</id>
+    <name>12</name>
+    <coordinates>
+      <x>12.0</x>
+      <y/>
+    </coordinates>
+    <creationDate>1713433013813</creationDate>
+    <annualTurnover/>
+    <fullName>meow</fullName>
+    <employeesCount>12</employeesCount>
+    <type>TRUST</type>
+    <postalAddress>
+      <zipCode>12</zipCode>
+      <town>
+        <x>-123</x>
+        <y>-432.0</y>
+        <name>meow</name>
+      </town>
+    </postalAddress>
+  </item>
 </TreeSet>
