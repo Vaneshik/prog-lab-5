@@ -29,8 +29,9 @@ public class RemoveLowerCommand implements CommandInterface {
             return;
         }
 
+        var size = manager.getCollection().size();
         manager.removeLower(new OrganizationForm(console).build());
-        console.println("Удалены элементы, меньшие, чем заданный");
+        console.println("Удалено " + String.valueOf(size-manager.getCollection().size()) + " элементов, меньшие, чем заданный");
     }
 
     @Override

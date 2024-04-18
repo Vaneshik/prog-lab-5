@@ -91,6 +91,7 @@ public class CollectionManager {
 
     /**
      * Вернуть список элементов, значение поля name которых содержит заданную подстроку.
+     *
      * @param name подстрока
      */
     public List<Organization> filterContainsName(String name) {
@@ -98,7 +99,8 @@ public class CollectionManager {
     }
 
     /**
-    ` * Вернуть список элементов, значение поля postalAddress которых меньше заданного.
+     * ` * Вернуть список элементов, значение поля postalAddress которых меньше заданного.
+     *
      * @param postalAddress индекс
      */
     public List<Organization> filterLessThanPostalAddress(Address postalAddress) {
@@ -107,6 +109,7 @@ public class CollectionManager {
 
     /**
      * Удалить элементы, которые больше заданного.
+     *
      * @param o объект для сравнения
      */
     public void removeGreater(Organization o) {
@@ -115,6 +118,7 @@ public class CollectionManager {
 
     /**
      * Удалить элементы, значение поля annualTurnover которых меньше заданного.
+     *
      * @param o объект для сравнения
      */
     public void removeLower(Organization o) {
@@ -123,9 +127,33 @@ public class CollectionManager {
 
     /**
      * Вернуть элемент по id.
+     *
      * @param id id элемента
      */
     public Organization getById(long id) {
         return collection.stream().filter(o -> o.getId() == id).findFirst().orElse(null);
+    }
+
+    public boolean isValidOrganization(Organization o) {
+        return o.getId() > 0 &&
+                getById(o.getId()) == null &&
+                o.getName() != null &&
+                !o.getName().isEmpty() &&
+                o.getCoordinates() != null &&
+                o.getCreationDate() != null &&
+                o.getAnnualTurnover() > 0 &&
+                o.getFullName() != null &&
+                !o.getFullName().isEmpty() &&
+                o.getEmployeesCount() != null &&
+                o.getEmployeesCount() > 0 &&
+                o.getPostalAddress() != null &&
+                o.getPostalAddress().getZipCode() != null &&
+                o.getPostalAddress().getTown() != null &&
+                o.getPostalAddress().getTown().getX() != null &&
+                o.getPostalAddress().getTown().getY() != null &&
+                o.getPostalAddress().getTown().getName() != null &&
+                !o.getPostalAddress().getTown().getName().isEmpty() &&
+                o.getCoordinates().getX() != null &&
+                o.getType() != null;
     }
 }

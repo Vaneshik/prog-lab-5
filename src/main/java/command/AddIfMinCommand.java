@@ -28,9 +28,14 @@ public class AddIfMinCommand implements CommandInterface {
             console.printError("Команда не принимает аргументы!");
             return;
         }
-
+        var size = manager.getCollection().size();
         manager.addIfMin(new OrganizationForm(console).build());
-        console.println("Элемент добавлен!");
+
+        if (size == manager.getCollection().size())
+            console.println("Элемент не добавлен (");
+        else {
+            console.println("Элемент добавлен!");
+        }
     }
 
     @Override

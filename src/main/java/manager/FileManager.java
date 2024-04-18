@@ -2,7 +2,13 @@ package manager;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import models.Organization;
+
 import java.io.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  * Менеджер файлов.
@@ -46,9 +52,16 @@ public class FileManager {
         try {
             XmlMapper xmlMapper = new XmlMapper();
             String xml = bufferedReaderToString(new BufferedReader(new FileReader(file)));
-            collectionManager.setCollection(xmlMapper.readValue(xml, new TypeReference<>() {
-            }));
+            List<Organization> to_check = xmlMapper.readValue(xml, new TypeReference<List<Organization>>() {
+            });
+
+            for (var organization : to_check) {
+                if (collectionManager.isValidOrganization(organization)) {
+                    collectionManager.add(organization);
+                }
+            }
         } catch (Exception e) {
+            console.println(e.getClass().getName());
             console.printError("Ошибка чтения файла");
         }
     }

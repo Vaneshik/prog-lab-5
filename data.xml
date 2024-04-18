@@ -6,16 +6,16 @@
       <x>1.0</x>
       <y>1.0</y>
     </coordinates>
-    <creationDate>1713415563114</creationDate>
+    <creationDate>1713437563467</creationDate>
     <annualTurnover>1.0</annualTurnover>
     <fullName>1</fullName>
     <employeesCount>1</employeesCount>
-    <type>COMMERCIAL</type>
+    <type>TRUST</type>
     <postalAddress>
       <zipCode>1</zipCode>
       <town>
         <x>1</x>
-        <y>11.0</y>
+        <y>1.0</y>
         <name>1</name>
       </town>
     </postalAddress>
@@ -27,80 +27,17 @@
       <x>2.0</x>
       <y>2.0</y>
     </coordinates>
-    <creationDate>1713415578920</creationDate>
+    <creationDate>1713437798740</creationDate>
     <annualTurnover>2.0</annualTurnover>
     <fullName>2</fullName>
     <employeesCount>2</employeesCount>
-    <type>COMMERCIAL</type>
+    <type>OPEN_JOINT_STOCK_COMPANY</type>
     <postalAddress>
       <zipCode>2</zipCode>
       <town>
         <x>2</x>
         <y>2.0</y>
         <name>2</name>
-      </town>
-    </postalAddress>
-  </item>
-  <item>
-    <id>4</id>
-    <name>2</name>
-    <coordinates>
-      <x>2.0</x>
-      <y>2.0</y>
-    </coordinates>
-    <creationDate>1713420404822</creationDate>
-    <annualTurnover/>
-    <fullName>ad</fullName>
-    <employeesCount>2</employeesCount>
-    <type>TRUST</type>
-    <postalAddress>
-      <zipCode>3</zipCode>
-      <town>
-        <x>3</x>
-        <y>3.0</y>
-        <name>23</name>
-      </town>
-    </postalAddress>
-  </item>
-  <item>
-    <id>3</id>
-    <name>4</name>
-    <coordinates>
-      <x>4.0</x>
-      <y>4.0</y>
-    </coordinates>
-    <creationDate>1713418697689</creationDate>
-    <annualTurnover>4.0</annualTurnover>
-    <fullName>4</fullName>
-    <employeesCount>4</employeesCount>
-    <type>COMMERCIAL</type>
-    <postalAddress>
-      <zipCode>4</zipCode>
-      <town>
-        <x>4</x>
-        <y>4.0</y>
-        <name>4</name>
-      </town>
-    </postalAddress>
-  </item>
-  <item>
-    <id>5</id>
-    <name>12</name>
-    <coordinates>
-      <x>12.0</x>
-      <y/>
-    </coordinates>
-    <creationDate>1713433013813</creationDate>
-    <annualTurnover/>
-    <fullName>meow</fullName>
-    <employeesCount>12</employeesCount>
-    <type>TRUST</type>
-    <postalAddress>
-      <zipCode>12</zipCode>
-      <town>
-        <x>-123</x>
-        <y>-432.0</y>
-        <name>meow</name>
       </town>
     </postalAddress>
   </item>

@@ -1,8 +1,8 @@
 package models;
 
 import lombok.*;
+import manager.CollectionManager;
 
-import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -25,6 +25,7 @@ public class Organization implements Comparable<Organization> {
     private Integer employeesCount; //Поле не может быть null, Значение поля должно быть больше 0
     private OrganizationType type; //Поле может быть null
     private Address postalAddress; //Поле не может быть null
+
 
     @Override
     public int compareTo(Organization other) {
