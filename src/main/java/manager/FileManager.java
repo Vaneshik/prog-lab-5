@@ -61,7 +61,6 @@ public class FileManager {
                 }
             }
         } catch (Exception e) {
-            console.println(e.getClass().getName());
             console.printError("Ошибка чтения файла");
         }
     }

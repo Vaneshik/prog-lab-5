@@ -75,7 +75,7 @@ public class CollectionManager {
      * @return первый элемент коллекции
      */
     public String minByFullName() {
-        return collection.stream().map(Organization::getFullName).min(String::compareTo).toString();
+        return collection.stream().map(Organization::getFullName).min(String::compareTo).orElse(null);
     }
 
     /**
