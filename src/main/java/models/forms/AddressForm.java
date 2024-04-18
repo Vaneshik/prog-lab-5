@@ -23,7 +23,7 @@ public class AddressForm extends Form<Address> {
     @Override
     public Address build() {
         return new Address(
-                askString("почтовый индекс", " (поле не может быть пустым)", s -> !s.isEmpty()),
+                askString("почтовый индекс", " (строка, поле не может быть пустым)", s -> !s.isEmpty()),
                 askLocation()
         );
     }

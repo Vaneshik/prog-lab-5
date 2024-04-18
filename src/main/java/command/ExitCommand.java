@@ -25,7 +25,7 @@ public class ExitCommand implements CommandInterface {
             return;
         }
 
-        console.println("Завершаю программу! (без сохранения в файл)");
+        console.println("Завершаю программу!");
         System.exit(0);
     }
 

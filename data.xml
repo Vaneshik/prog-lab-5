@@ -41,4 +41,25 @@
       </town>
     </postalAddress>
   </item>
+  <item>
+    <id>3</id>
+    <name>2</name>
+    <coordinates>
+      <x>0.213456789</x>
+      <y>0.2134568</y>
+    </coordinates>
+    <creationDate>1713439152520</creationDate>
+    <annualTurnover>2.2</annualTurnover>
+    <fullName>3245</fullName>
+    <employeesCount>32456</employeesCount>
+    <type>TRUST</type>
+    <postalAddress>
+      <zipCode>345678</zipCode>
+      <town>
+        <x>213456</x>
+        <y>3456.0</y>
+        <name>efrgthyu</name>
+      </town>
+    </postalAddress>
+  </item>
 </TreeSet>

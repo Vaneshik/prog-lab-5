@@ -29,12 +29,12 @@ public class OrganizationForm extends Form<Organization> {
     public Organization build() {
         return new Organization(
                 IdManager.generateId(),
-                askString("название организации", " (поле не может быть пустым)", s -> !s.isEmpty()),
+                askString("название организации", " (строка, поле не может быть пустым)", s -> !s.isEmpty()),
                 askCoordinates(),
                 new Date(),
-                askDouble("годовой оборот", " (значение должно быть больше нуля)", x -> (x == null || x > 0)),
-                askString("полное название организации", " (поле не может быть пустым)", s -> !s.isEmpty()),
-                askInteger("количество сотрудников", " (поле не может быть пустым, значение должно быть больше нуля)", x -> (x != null && x > 0)),
+                askDouble("годовой оборот", " (десятичная дробь, значение должно быть больше нуля)", x -> (x == null || x > 0)),
+                askString("полное название организации", " (строка, поле не может быть пустым)", s -> !s.isEmpty()),
+                askInteger("количество сотрудников", " (целое число, поле не может быть пустым, значение должно быть больше нуля)", x -> (x != null && x > 0)),
                 askOrganizationType(),
                 askAddress()
         );

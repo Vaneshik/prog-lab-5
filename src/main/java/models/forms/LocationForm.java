@@ -21,9 +21,9 @@ public class LocationForm extends Form<Location>{
     @Override
     public Location build() {
         return new Location(
-                askLong("координата x", " (поле не может быть пустым)", Objects::nonNull),
-                askDouble("координата y", " (поле не может быть пустым)", Objects::nonNull),
-                askString("название локации", " (поле не может быть пустым)", s -> !s.isEmpty())
+                askLong("координата x", " (целое число, поле не может быть пустым)", Objects::nonNull),
+                askDouble("координата y", " (десятичная дробь, поле не может быть пустым)", Objects::nonNull),
+                askString("название локации", " (строка, поле не может быть пустым)", s -> !s.isEmpty())
         );
     }
 }
