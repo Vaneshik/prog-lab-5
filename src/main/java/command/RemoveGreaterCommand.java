@@ -29,8 +29,8 @@ public class RemoveGreaterCommand implements CommandInterface {
             return;
         }
 
-        console.println("Удалены элементы, превышающие заданный");
         manager.removeGreater(new OrganizationForm(console).build());
+        console.println("Удалены элементы, превышающие заданный");
     }
 
     @Override
