@@ -30,8 +30,14 @@ public class RemoveByIdCommand implements CommandInterface {
 
         try {
             long id = Long.parseLong(args[0]);
+            if (manager.getById(id) == null) {
+                console.printError("Элемент с id " + id + " не найден");
+                return;
+            }
+
             manager.removeById(id);
             console.println("Элемент с id " + id + " удален");
+
         } catch (NumberFormatException e) {
             console.printError("Неверный формат аргумента!");
         }
