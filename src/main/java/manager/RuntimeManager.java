@@ -19,15 +19,15 @@ public class RuntimeManager {
      * Интерактивный режим.
      */
     public void interactiveMode() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = ScannerManager.getScanner();
         fileManager.fillCollection();
         while (true) {
             try {
                 console.print(">>> ");
                 String[] userCommand = scanner.nextLine().trim().split(" ");
                 commandManager.executeCommand(userCommand[0].toLowerCase(), Arrays.copyOfRange(userCommand, 1, userCommand.length));
-            } catch (NoSuchElementException e){
-              return;
+            } catch (NoSuchElementException e) {
+                return;
             } catch (Exception e) {
                 console.printError(e.getMessage());
             }

@@ -9,5 +9,5 @@ public interface CommandInterface {
      *
      * @param args аргументы
      */
-    void execute(String[] args);
+    int execute(String[] args);
 }

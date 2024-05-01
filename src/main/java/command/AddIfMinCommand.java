@@ -23,10 +23,10 @@ public class AddIfMinCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args) {
+    public int execute(String[] args) {
         if (args.length != 0) {
             console.printError("Команда не принимает аргументы!");
-            return;
+            return 1;
         }
         var size = manager.getCollection().size();
         manager.addIfMin(new OrganizationForm(console).build());
@@ -36,6 +36,7 @@ public class AddIfMinCommand implements CommandInterface {
         else {
             console.println("Элемент добавлен!");
         }
+        return 0;
     }
 
     @Override

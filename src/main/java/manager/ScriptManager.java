@@ -42,15 +42,11 @@ public class ScriptManager {
     }
 
     /**
-     * Считать следующую строку из файла.
+     * Получить последний сканнер.
      *
-     * @return строка
+     * @return последний сканнер
      */
-    public static String nextLine() {
-        try {
-            return scanners.lastElement().nextLine();
-        } catch (Exception e) {
-            return "";
-        }
+    public static Scanner getLastScanner() {
+        return scanners.lastElement();
     }
 }

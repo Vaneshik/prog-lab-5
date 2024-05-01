@@ -1,2 +1,2 @@
 help
-execute_script recursive2.script
+execute_script scripts/recursive2.script

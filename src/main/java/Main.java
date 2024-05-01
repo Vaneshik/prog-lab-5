@@ -1,7 +1,6 @@
 import command.*;
 import manager.*;
 
-
 public class Main {
     public static void main(String[] args) {
         ConsoleManager console = new ConsoleManager();

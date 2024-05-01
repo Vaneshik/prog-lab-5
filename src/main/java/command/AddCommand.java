@@ -23,12 +23,13 @@ public class AddCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args) {
+    public int execute(String[] args) {
         if (args.length != 0) {
             console.printError("Команда не принимает аргументы!");
-            return;
+            return 1;
         }
         manager.add(new OrganizationForm(console).build());
+        return 0;
     }
 
     @Override

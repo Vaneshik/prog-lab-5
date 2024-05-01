@@ -22,14 +22,15 @@ public class HelpCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args) {
+    public int execute(String[] args) {
         if (args.length != 0) {
             console.printError("Команда не принимает аргументы!");
-            return;
+            return 1;
         }
 
         console.println("Доступные команды:");
         manager.getCommands().forEach((name, command) -> console.println(name + command.toString()));
+        return 0;
     }
 
     @Override

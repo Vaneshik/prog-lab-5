@@ -24,10 +24,10 @@ public class FilterLessThanPostalAddressCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args) {
+    public int execute(String[] args) {
         if (args.length != 0) {
             console.printError("Команда не принимает аргументы!");
-            return;
+            return 1;
         }
 
         var response = manager.filterLessThanPostalAddress(new AddressForm(console).build());
@@ -37,6 +37,7 @@ public class FilterLessThanPostalAddressCommand implements CommandInterface {
             console.println("Элементы, значение поля postalAddress которых меньше заданного:");
             response.stream().map(Organization::toString).forEach(console::println);
         }
+        return 0;
     }
 
     @Override

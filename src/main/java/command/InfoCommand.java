@@ -22,16 +22,18 @@ public class InfoCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args) {
+    public int execute(String[] args) {
         if (args.length != 0) {
             console.printError("Команда не принимает аргументы!");
-            return;
+            return 1;
         }
 
         console.println("Дата инициализации коллекции: " + CollectionManager.initializationTime);
         var collection = manager.getCollection();
         console.println("Тип коллекции: " + collection.getClass().getName());
         console.println("Размер коллекции: " + collection.size());
+
+        return 0;
     }
 
     @Override

@@ -23,15 +23,15 @@ public class RemoveGreaterCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args) {
+    public int execute(String[] args) {
         if (args.length != 0) {
             console.printError("Команда не принимает аргументы!");
-            return;
+            return 1;
         }
         var size = manager.getCollection().size();
         manager.removeGreater(new OrganizationForm(console).build());
-        console.println("Удалено " + String.valueOf(size-manager.getCollection().size()) + " элементов, превышающих заданный");
-
+        console.println("Удалено " + String.valueOf(size - manager.getCollection().size()) + " элементов, превышающих заданный");
+        return 0;
     }
 
     @Override

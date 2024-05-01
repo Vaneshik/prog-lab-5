@@ -22,20 +22,20 @@ public class ShowCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args) {
+    public int execute(String[] args) {
         if (args.length != 0) {
             console.printError("Команда не принимает аргументы!");
-            return;
+            return 1;
         }
         var collection = manager.getCollection();
 
         if (collection.isEmpty()) {
             console.println("Коллекция пуста!");
-            return;
+        } else {
+            console.println("Элементы коллекции:");
+            manager.getCollection().stream().map(Object::toString).forEach(console::println);
         }
-
-        console.println("Элементы коллекции:");
-        manager.getCollection().stream().map(Object::toString).forEach(console::println);
+        return 0;
     }
 
     @Override

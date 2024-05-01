@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Форма для создания объекта класса {@link Location}.
  */
-public class LocationForm extends Form<Location>{
+public class LocationForm extends Form<Location> {
     public LocationForm(ConsoleManager console) {
         super(console);
     }

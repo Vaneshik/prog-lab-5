@@ -34,17 +34,19 @@ public class CommandManager {
      *
      * @param name имя команды
      * @param args аргументы
+     * @return код завершения
      */
-    public void executeCommand(String name, String[] args) {
+    public int executeCommand(String name, String[] args) {
         CommandInterface command = commands.get(name);
         if (command != null) {
             try {
-                command.execute(args);
+                return command.execute(args);
             } catch (Exception e) {
                 console.printError(e.getClass().getName());
+                return -1;
             }
-        } else {
-            console.println("Команда не найдена! Попробуйте ввести 'help' для получения списка команд.");
         }
+        console.println("Команда не найдена! Попробуйте ввести 'help' для получения списка команд.");
+        return -1;
     }
 }

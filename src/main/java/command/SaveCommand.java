@@ -22,13 +22,21 @@ public class SaveCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args)  {
+    public int execute(String[] args) {
+        if (args.length != 0) {
+            console.printError("Команда не принимает аргументы!");
+            return 1;
+        }
+
         try {
             fileManager.saveCollection();
-        } catch (Exception e){
+        } catch (Exception e) {
             console.printError(e.getMessage());
+            return 2;
         }
+
         console.println("Коллекция сохранена в файл");
+        return 0;
     }
 
     @Override

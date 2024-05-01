@@ -19,7 +19,7 @@ public class CoordinatesForm extends Form<Coordinates> {
     @Override
     public Coordinates build() {
         return new Coordinates(
-                askDouble("координата x", " (десятичная дробь, поле не может быть пустым, максимальное значение = 30)", x ->(x != null && x <= 30)),
+                askDouble("координата x", " (десятичная дробь, поле не может быть пустым, максимальное значение = 30)", x -> (x != null && x <= 30)),
                 askFloat("координата y", " (десятичная дробь)", x -> true)
         );
     }

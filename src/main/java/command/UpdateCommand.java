@@ -23,22 +23,23 @@ public class UpdateCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args) {
+    public int execute(String[] args) {
         if (args.length != 1) {
             console.printError("Команда принимает один аргумент!");
-            return;
+            return 1;
         }
         if (!args[0].matches("\\d+")) {
             console.printError("id должен быть числом!");
-            return;
+            return 2;
         }
         long id = Long.parseLong(args[0]);
         if (manager.getById(id) == null) {
             console.printError("Элемента с таким id нет в коллекции!");
-            return;
+            return 3;
         }
         manager.update(id, new OrganizationForm(console).build());
         console.println("Обновлен элемент с id " + args[0]);
+        return 0;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package models.forms;
 
 import manager.ConsoleManager;
+import manager.ScannerManager;
 
 import java.util.Scanner;
 import java.util.function.Predicate;
@@ -10,11 +11,10 @@ import java.util.function.Predicate;
  * Абстрактный класс для формирования объектов классов пользователем.
  *
  * @param <T> Класс формируемого объекта
- * @author Vaneshik
  */
 public abstract class Form<T> {
     private final ConsoleManager console;
-    private final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = ScannerManager.getScanner();
 
 
     public Form(ConsoleManager console) {

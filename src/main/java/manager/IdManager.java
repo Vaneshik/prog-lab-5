@@ -32,7 +32,6 @@ public class IdManager {
         while (collectionManager.getById(id) != null) {
             id++;
         }
-
         return id;
     }
 }

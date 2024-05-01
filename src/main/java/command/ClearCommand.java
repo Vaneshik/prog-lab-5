@@ -22,14 +22,16 @@ public class ClearCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args) {
+    public int execute(String[] args) {
         if (args.length != 0) {
             console.printError("Команда не принимает аргументы!");
-            return;
+            return 1;
         }
 
         console.println("Коллекция очищена");
         manager.clear();
+
+        return 0;
     }
 
     @Override

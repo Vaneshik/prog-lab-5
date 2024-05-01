@@ -5,10 +5,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import models.Organization;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.List;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 /**
  * Менеджер файлов.
@@ -22,6 +19,32 @@ public class FileManager {
         this.inputFileName = inputFileName;
         this.console = console;
         this.collectionManager = collectionManager;
+    }
+
+    /**
+     * Проверить, можно ли читать файл.
+     *
+     * @param file    файл
+     * @param console менеджер консоли
+     * @return true, если можно читать файл, иначе false
+     */
+    public static boolean canRead(File file, ConsoleManager console) {
+        if (!file.exists()) {
+            console.printError("Файл не найден");
+            return false;
+        }
+
+        if (!file.canRead()) {
+            console.printError("Нет прав на чтение файла");
+            return false;
+        }
+
+        if (!file.isFile()) {
+            console.printError("Указанный путь не является файлом");
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -56,7 +79,7 @@ public class FileManager {
             });
 
             for (var organization : to_check) {
-                if (collectionManager.isValidOrganization(organization)) {
+                if (ValidationManager.isValidOrganization(organization, collectionManager)) {
                     collectionManager.add(organization);
                 } else {
                     console.printError("Организация с id " + organization.getId() + " не прошла валидацию");
@@ -67,7 +90,6 @@ public class FileManager {
             console.printError("Ошибка чтения файла");
         }
     }
-
 
     /**
      * Преобразовать BufferedReader в строку.
@@ -84,31 +106,5 @@ public class FileManager {
         }
         br.close();
         return sb.toString();
-    }
-
-    /**
-     * Проверить, можно ли читать файл.
-     *
-     * @param file    файл
-     * @param console менеджер консоли
-     * @return true, если можно читать файл, иначе false
-     */
-    public static boolean canRead(File file, ConsoleManager console) {
-        if (!file.exists()) {
-            console.printError("Файл не найден");
-            return false;
-        }
-
-        if (!file.canRead()) {
-            console.printError("Нет прав на чтение файла");
-            return false;
-        }
-
-        if (!file.isFile()) {
-            console.printError("Указанный путь не является файлом");
-            return false;
-        }
-
-        return true;
     }
 }

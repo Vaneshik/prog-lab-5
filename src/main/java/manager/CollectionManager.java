@@ -16,13 +16,14 @@ import java.util.TreeSet;
 @Setter
 public class CollectionManager {
     /**
-     * Коллекция.
-     */
-    private TreeSet<Organization> collection = new TreeSet<Organization>();
-    /**
      * Время инициализации коллекции.
      */
     public static Date initializationTime = new Date();
+
+    /**
+     * Коллекция.
+     */
+    private TreeSet<Organization> collection = new TreeSet<Organization>();
 
     /**
      * Добавить элемент в коллекцию.
@@ -99,7 +100,7 @@ public class CollectionManager {
     }
 
     /**
-     * ` * Вернуть список элементов, значение поля postalAddress которых меньше заданного.
+     * Вернуть список элементов, значение поля postalAddress которых меньше заданного.
      *
      * @param postalAddress индекс
      */
@@ -132,28 +133,5 @@ public class CollectionManager {
      */
     public Organization getById(long id) {
         return collection.stream().filter(o -> o.getId() == id).findFirst().orElse(null);
-    }
-
-    public boolean isValidOrganization(Organization o) {
-        return o.getId() > 0 &&
-                getById(o.getId()) == null &&
-                o.getName() != null &&
-                !o.getName().isEmpty() &&
-                o.getCoordinates() != null &&
-                o.getCreationDate() != null &&
-                o.getAnnualTurnover() > 0 &&
-                o.getFullName() != null &&
-                !o.getFullName().isEmpty() &&
-                o.getEmployeesCount() != null &&
-                o.getEmployeesCount() > 0 &&
-                o.getPostalAddress() != null &&
-                o.getPostalAddress().getZipCode() != null &&
-                o.getPostalAddress().getTown() != null &&
-                o.getPostalAddress().getTown().getX() != null &&
-                o.getPostalAddress().getTown().getY() != null &&
-                o.getPostalAddress().getTown().getName() != null &&
-                !o.getPostalAddress().getTown().getName().isEmpty() &&
-                o.getCoordinates().getX() != null &&
-                o.getType() != null;
     }
 }

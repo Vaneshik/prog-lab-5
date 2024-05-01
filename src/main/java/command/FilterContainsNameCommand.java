@@ -22,10 +22,10 @@ public class FilterContainsNameCommand implements CommandInterface {
      * @param args аргументы
      */
     @Override
-    public void execute(String[] args) {
+    public int execute(String[] args) {
         if (args.length != 1) {
             console.printError("Команда принимает один аргумент!");
-            return;
+            return 1;
         }
         var filteredOrganizations = manager.filterContainsName(args[0]);
         if (!filteredOrganizations.isEmpty()) {
@@ -34,6 +34,8 @@ public class FilterContainsNameCommand implements CommandInterface {
         } else {
             console.println("Ничего не найдено! :(");
         }
+
+        return 0;
     }
 
     @Override
